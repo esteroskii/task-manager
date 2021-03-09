@@ -6,7 +6,7 @@
   <div class="row" style="height:inherit;">
     <app-list *ngFor="let list of lists;let i = index" [list]="list" [listIndex]="i"
               (moveCardAcrossList)="moveCardAcrossList($event)"
-              (deleteList)="deleteList($event)"
+              (deleteList)="deleteList(list.id)"
               attr.listIndex="{{i}}"
     ></app-list>
     <div class="col custom-col"

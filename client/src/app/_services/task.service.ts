@@ -28,6 +28,7 @@ export class TaskService {
 
   //POST
   postTask(taskinfo:any){
+    console.log(taskinfo);
     return this.http.post(AUTH_API, taskinfo, httpOptions)
   }
 

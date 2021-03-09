@@ -3,6 +3,7 @@ import {DOCUMENT} from '@angular/common';
 import {ListInterface, List} from '../../../model/list/list.model';
 import {Card, CardInterface} from '../../../model/card/card.model';
 import { MovementIntf, Movement } from 'src/app/model/card/movement';
+import { TaskService } from '../../../_services/task.service'
 
 
 @Component({
@@ -24,16 +25,28 @@ export class ListComponent implements OnInit {
 
   private cardCount = 0;
 
-  constructor(private elementRef: ElementRef , @Inject(DOCUMENT) private document: Document) { }
+  constructor(private elementRef: ElementRef , @Inject(DOCUMENT) private document: Document, private TaskService: TaskService) { }
 
   ngOnInit() {
-
+    
   }
 
   addNewCard() {
-    const card = new Card(this.cardCount++ + '', 'header' + this.cardCount, 'summary' + this.cardCount, 'sample desc');
+    var user = JSON.parse(sessionStorage.getItem("auth-user"));
+    var idUser = user["id"]; 
+    console.log(idUser);
+    this.TaskService.postTask({
+      "description": "nueva tarea",
+      "state": this.list.name,
+      "userId": idUser,
+      "projectId": 1
+    }).subscribe((response) => {
+      console.log(response);
+    })
+    
+   /* const card = new Card(this.cardCount++ + '', 'header' + this.cardCount, 'summary' + this.cardCount, 'sample desc');
     this.list.cards.push(card);
-    this.newCardAdded.emit(card);
+    this.newCardAdded.emit(card);*/
   }
 
 
@@ -58,13 +71,17 @@ export class ListComponent implements OnInit {
           parseInt(cardElementBeingDroppedOn.getAttribute('cardIndex'), 10);
     const listIndexDragged = parseInt(data.listIndex, 10);
     const cardIndexDragged = parseInt(data.cardIndex, 10);
+    
+
 
     if (listIndexDragged === listIndexDroppedOn) {
         // same list just re-organize the cards
         const cardDragged = this.list.cards.splice(cardIndexDragged,1);
+        console.log(cardDragged);
         this.list.cards.splice(cardIndexDroppedOn , 0 , ...cardDragged);
     } else {
-      this.moveCardAcrossList.emit(new Movement(listIndexDragged, listIndexDroppedOn , cardIndexDragged , cardIndexDroppedOn));
+
+      this.moveCardAcrossList.emit(new Movement(listIndexDragged, listIndexDroppedOn , cardIndexDragged , cardIndexDroppedOn, this.list.name));
     }
 
   }

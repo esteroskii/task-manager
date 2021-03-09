@@ -58,6 +58,7 @@ export class ContentEditDirective implements OnInit {
   makeContentEditable() {
       this.renderer2.appendChild( this.el.nativeElement, this.renderer2.createText(this.appContentEdit));
       this.renderer2.listen(this.el.nativeElement, 'dblclick', () => {
+        
         this.renderer2.setAttribute(this.el.nativeElement, 'contenteditable', 'true');
         this.renderer2.addClass(this.el.nativeElement, 'inline-edit');
         this.el.nativeElement.focus();
