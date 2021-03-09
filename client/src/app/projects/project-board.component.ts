@@ -13,8 +13,9 @@ export class ProjectBoardComponent implements OnInit {
   };
 
   public project: any;
+  public userId="1";
   public projectId="";
-  public projects = [];
+  public projects :any;
   errorMessage = '';
 
   //private projectId: string, 
@@ -29,9 +30,10 @@ export class ProjectBoardComponent implements OnInit {
 
     //it obtains the projects of the specific user
     //Revisar en el api que esta obteniendo los del usuario especifico
-    this.projectservices.getProject(this.projectId).subscribe(
+    this.projectservices.getUserProjects(this.userId).subscribe(
       (response)=>{
-        this.project = response;
+        this.projects = response;
+        console.log(this.projects);
       },
       err => {
         this.errorMessage = err.error.message;
