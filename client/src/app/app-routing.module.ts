@@ -3,8 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { ProjectBoardComponent } from "./project-board/project-board.component";
-import { TaskBoardComponent} from "./task-board/task-board.component";
+import { ProjectBoardComponent } from "./projects/project-board.component";
 import {BoardComponent} from './components/board/board/board.component';
 
 
@@ -12,8 +11,7 @@ import {BoardComponent} from './components/board/board/board.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'project-board', component: ProjectBoardComponent},
-  { path: 'task-board', component: TaskBoardComponent },
+  { path: 'projects', component: ProjectBoardComponent},
   { path: 'board', component: BoardComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }

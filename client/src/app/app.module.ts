@@ -16,8 +16,7 @@ import { ContextMenuComponent } from './components/common/contextmenu/context-me
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { TaskBoardComponent } from './task-board/task-board.component';
-import {ProjectBoardComponent  } from "./project-board/project-board.component";
+import {ProjectBoardComponent  } from "./projects/project-board.component";
 import {LocalService} from './board/local/local.service';
 
 @NgModule({
@@ -32,8 +31,7 @@ import {LocalService} from './board/local/local.service';
     ContextMenuComponent,
     LoginComponent,
     RegisterComponent,
-    ProjectBoardComponent,
-    TaskBoardComponent
+    ProjectBoardComponent
   ],
   imports: [
     BrowserModule,
