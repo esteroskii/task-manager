@@ -18,8 +18,8 @@ export class ProjectService {
 //PROJECTS
 
   //GET
-  getProjects(){
-    return this.http.get(AUTH_API)
+  getUserProjects(id:string){
+    return this.http.get(AUTH_API+id+"/projects")
   }
 
   getProject(id:string){
