@@ -5911,19 +5911,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ester.vargas.rueda\\.nuget\\packages\\": {}
+    "C:\\Users\\dmsol\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ester.vargas.rueda\\Desktop\\webProject\\api\\TaskAsigment.csproj",
+      "projectUniqueName": "C:\\Users\\dmsol\\OneDrive\\Documents\\progra2\\task-manager\\api\\TaskAsigment.csproj",
       "projectName": "TaskAsigment",
-      "projectPath": "C:\\Users\\ester.vargas.rueda\\Desktop\\webProject\\api\\TaskAsigment.csproj",
-      "packagesPath": "C:\\Users\\ester.vargas.rueda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ester.vargas.rueda\\Desktop\\webProject\\api\\obj\\",
+      "projectPath": "C:\\Users\\dmsol\\OneDrive\\Documents\\progra2\\task-manager\\api\\TaskAsigment.csproj",
+      "packagesPath": "C:\\Users\\dmsol\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dmsol\\OneDrive\\Documents\\progra2\\task-manager\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ester.vargas.rueda\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\dmsol\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5990,7 +5990,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.405\\RuntimeIdentifierGraph.json"
       }
     }
   }
