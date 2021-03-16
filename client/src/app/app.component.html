@@ -1,11 +1,7 @@
 <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a href="/projects" routerLink="projects" class="navbar-brand">Project Manager</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/board" class="nav-link" routerLink="board">Board </a>
-      </li>
-    </ul>
+  
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">

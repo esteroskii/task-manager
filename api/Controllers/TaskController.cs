@@ -20,29 +20,29 @@ namespace TaskAsigment.Controllers
         }
 
         [HttpGet("{id}")]
-        public async  Task<ActionResult<Tasks>> getTask(long id)
+        public async  Task<ActionResult<Assignment>> getTask(long id)
         {
-            var task = await _context.Tareas.FindAsync(id);
+            var task = await _context.Tasks.FindAsync(id);
             if(task == null){
                 return NotFound();
             }
             return task;
         }
         [HttpGet]
-        public async  Task<ActionResult<IEnumerable<Tasks>>> getTasks()
+        public async  Task<ActionResult<IEnumerable<Assignment>>> getTasks()
         {
-            return await _context.Tareas.ToListAsync();
+            return await _context.Tasks.ToListAsync();
         }
         [HttpPost]
         
-        public async Task<ActionResult<Project>> postTask(Tasks task){
-            _context.Tareas.Add(task);
+        public async Task<ActionResult<Project>> postTask(Assignment task){
+            _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
             return CreatedAtAction("getTask", new {id = task.id}, task);
         }
         
         [HttpPut("{id}")]
-        public async Task<ActionResult<Tasks>> updateTask(long id,Tasks task){
+        public async Task<ActionResult<Assignment>> updateTask(long id,Assignment task){
             if(id != task.id){
                 return BadRequest();
             }
@@ -52,12 +52,12 @@ namespace TaskAsigment.Controllers
             return CreatedAtAction("getTask", new {id = task.id}, task);
         }
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Tasks>> deleteTask(long id){
-            var task = await _context.Tareas.FindAsync(id);
+        public async Task<ActionResult<Assignment>> deleteTask(long id){
+            var task = await _context.Tasks.FindAsync(id);
             if(task == null){
                 return NotFound();
             }
-            _context.Tareas.Remove(task);
+            _context.Tasks.Remove(task);
             await _context.SaveChangesAsync();
             return task;
         }

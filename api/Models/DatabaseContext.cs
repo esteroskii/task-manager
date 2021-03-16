@@ -13,7 +13,7 @@ namespace TaskAsigment.Models
         public DbSet<User> Users {get; set;}
         public DbSet<Project> Projects {get; set;}
         public DbSet<State> States { get; set; }
-        public DbSet<Tasks> Tareas { get; set; }
+        public DbSet<Assignment> Tasks { get; set; }
 
     }
 

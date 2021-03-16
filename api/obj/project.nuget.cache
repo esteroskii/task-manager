@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "76l8ufjr2CS23JUbdkMJntOM9FPNNqLLCVLFFzcRF5zRJN+ti/+Y82ogeRpCmqI8Je18oFSsYxhG4Ki+JI8GGg==",
+  "dgSpecHash": "7pOxtq9/Hk0ShrBosAxxpzEvNVfAz2hbEwdN8Q3UIovgS7vWJA12BKJ/N3eBFfzn9pVgkqihqUxcWdhDYzGhRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto\\task-manager\\api\\TaskAsigment.csproj",
+  "projectFilePath": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto final\\task-manager\\api\\TaskAsigment.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\crist\\.nuget\\packages\\efcore.namingconventions\\5.0.2\\efcore.namingconventions.5.0.2.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

@@ -9,6 +9,7 @@ namespace TaskAsigment.Models
         public string email { get; set; }
         public string password { get; set; }
 
+        public List<Project> projects { get; set;}
 
     }
 }

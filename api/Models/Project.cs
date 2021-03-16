@@ -8,7 +8,13 @@ namespace TaskAsigment.Models
         public string name { get; set; }
         public string description { get; set; }
 
+    //////////////////////////////////////////////////
+        public long userId { get; set;}
+        public User user { get; set;}
+    /////////////////////////////////////////////////
+        public List<Assignment> tasks { get; set; }
+    /////////////////////////////////////////////////
+        public List<State> states {get; set;}
 
-        public List<Tasks> tareas { get; set; }
     }
 }

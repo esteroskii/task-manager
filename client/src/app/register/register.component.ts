@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
-
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -25,9 +25,9 @@ export class RegisterComponent implements OnInit {
     const { name, email, password } = this.form;
 
     var signupinfo = {
-      "name":name,
-      "email":email,
-      "password":password
+      "name": name,
+      "email": email,
+      "password": password
     }
 
     this.authService.register(signupinfo).subscribe(
@@ -42,4 +42,8 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  redirectPage(): void {
+    this.router.navigate(['/login']);
+  }
+
 }

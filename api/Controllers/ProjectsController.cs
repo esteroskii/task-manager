@@ -29,9 +29,9 @@ namespace TaskAsigment.Controllers
             }
             return project;
         }
-        public async Task<ActionResult<Tasks>> getTask(long id)
+        public async Task<ActionResult<Assignment>> getTask(long id)
         {
-            var task = await _context.Tareas.FindAsync(id);
+            var task = await _context.Tasks.FindAsync(id);
             if (task == null)
             {
                 return NotFound();
@@ -89,24 +89,24 @@ namespace TaskAsigment.Controllers
             return CreatedAtAction("getProject", new { id = project.id }, project);
         }
         [HttpGet("{id}/tasks")]
-        public async Task<ActionResult<IEnumerable<Tasks>>> getTasks(long id)
+        public async Task<ActionResult<IEnumerable<Assignment>>> getTasks(long id)
         {
-            return await _context.Tareas.Where(b => b.projectId == id).ToListAsync();
+            return await _context.Tasks.Where(b => b.projectId == id).ToListAsync();
         }
         [HttpPost("{id}/tasks")]
-        public async Task<ActionResult<Tasks>> postTask(Tasks task)
+        public async Task<ActionResult<Assignment>> postTask(Assignment task)
         {
-            _context.Tareas.Add(task);
+            _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
             return CreatedAtAction("getTask", new { id = task.id }, task);
         }
         [HttpGet("{id}/tasks/{idtask}")]
-        public async Task<ActionResult<Tasks>> getProjectTask(long id, long idtask)
+        public async Task<ActionResult<Assignment>> getProjectTask(long id, long idtask)
         {
-            return await _context.Tareas.Where(b => b.projectId == id && b.id == idtask).SingleAsync();
+            return await _context.Tasks.Where(b => b.projectId == id && b.id == idtask).SingleAsync();
 
         }
-
+        /*
         [HttpGet("{id}/projects")]
         public async Task<ActionResult<IEnumerable<Project>>> getUserProjects(long id)
         {
@@ -138,7 +138,7 @@ namespace TaskAsigment.Controllers
             }
             return projects;
         }
-
+        
         [HttpGet("{id}/users")]
         public async Task<ActionResult<IEnumerable<User>>> getUsers(long id)
         {
@@ -150,6 +150,18 @@ namespace TaskAsigment.Controllers
                 users.Add(user);
             }
             return users;
+        }
+        */
+         [HttpGet("{id}/projects")]
+        public async Task<ActionResult<IEnumerable<Project>>> getUserProjects(long id)
+        {
+            var x = await _context.Projects.Where((b) => b.userId == id).ToListAsync();
+            List<Project> projects = new List<Project>();
+            foreach (var project in x)
+            {
+                projects.Add(project);
+            }
+            return projects;
         }
     }
 }

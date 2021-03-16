@@ -66,6 +66,6 @@ export class LoginComponent implements OnInit {
   }
 
   redirectPage(): void {
-   this.router.navigate(['/board']);
+   this.router.navigate(['/projects']);
   }
 }

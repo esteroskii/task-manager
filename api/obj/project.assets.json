@@ -5615,11 +5615,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto\\task-manager\\api\\TaskAsigment.csproj",
+      "projectUniqueName": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto final\\task-manager\\api\\TaskAsigment.csproj",
       "projectName": "TaskAsigment",
-      "projectPath": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto\\task-manager\\api\\TaskAsigment.csproj",
+      "projectPath": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto final\\task-manager\\api\\TaskAsigment.csproj",
       "packagesPath": "C:\\Users\\crist\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto\\task-manager\\api\\obj\\",
+      "outputPath": "C:\\Users\\crist\\Documents\\Progra Web 2\\proyecto final\\task-manager\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\crist\\AppData\\Roaming\\NuGet\\NuGet.Config",

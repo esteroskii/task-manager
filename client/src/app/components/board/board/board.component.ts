@@ -9,8 +9,8 @@ import { Staus } from '../../../model/statuses/statuses.model';
 import { JsonPipe } from '@angular/common';
 import { TaskService } from '../../../_services/task.service'
 import { Card } from '../../../model/card/card.model'
-import { stat } from 'fs';
-
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { ProjectService } from '../../../_services/project.service';
 
 @Component({
   selector: 'app-board',
@@ -19,18 +19,27 @@ import { stat } from 'fs';
 })
 export class BoardComponent implements OnInit {
 
-
+  id: string;
   lists: ListInterface[];
   statuses : Staus[];
   cards : Card[];
-  constructor(private localService: LocalService, private StatusesService: ProjectStatusesService, private TaskService: TaskService) { 
+  constructor( private projectservices: ProjectService,private route:ActivatedRoute,private router:Router,private localService: LocalService, private StatusesService: ProjectStatusesService, private TaskService: TaskService) { 
     this.statuses = [];
     this.cards = [];
     this.lists = [];
+    this.id = "";
   }
 
   async ngOnInit() {
+    
+    var projectid = this.route
+    .queryParams
+    .subscribe(params => {
+      // Defaults to 0 if no query param provided.
+      this.id = params['id'] || 0;
+    });
 
+    console.log("llego"+projectid);
 
     await this.getStatus();
    
@@ -53,12 +62,10 @@ export class BoardComponent implements OnInit {
         newList.position = this.lists.length + 1;
         newList.name = status.name;
         newList.id = status.id;
-        if (this.lists === undefined) {
-          this.lists = [];
-        }
         this.lists.push(newList);
       });
-      this.TaskService.geTasks().subscribe((response) => {
+      this.projectservices.geTasks(this.id).subscribe((response) => {
+        console.log(response);
         var x = JSON.parse(JSON.stringify(response));
   
         for (let index = 0; index < this.lists.length; index++) {
@@ -72,12 +79,15 @@ export class BoardComponent implements OnInit {
                 element.description
               );
               this.lists[index].cards.push(card);
+              console.log(this.lists[index].cards);
+
             }
           });
         }
   
       })
     }) 
+    
   }
 
  
