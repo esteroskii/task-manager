@@ -22,7 +22,7 @@ export class ProjectBoardComponent implements OnInit {
   errorMessage = '';
 
   //private projectId: string, 
-  constructor(private route:ActivatedRoute,private router:Router, private projectservices: ProjectService) {
+  constructor(private tokenStorageService: TokenStorageService, private route:ActivatedRoute,private router:Router, private projectservices: ProjectService) {
     this.project = [];
   }
 
@@ -31,6 +31,7 @@ export class ProjectBoardComponent implements OnInit {
   All Status Initialize
   */
   ngOnInit(): void {
+    
     var user = JSON.parse(sessionStorage.getItem("auth-user"));
     this.idUser = user["id"]?user["id"]:''; 
     console.log(this.idUser);
@@ -68,6 +69,7 @@ export class ProjectBoardComponent implements OnInit {
     this.projectservices.postProject(projectinfo).subscribe(
       data=>{
         console.log(data);
+        this.ngOnInit();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -83,6 +85,7 @@ export class ProjectBoardComponent implements OnInit {
     this.projectservices.deleteProject(id).subscribe(
       (response)=>{
         console.log(response);
+        this.ngOnInit();
       }
       )
   }
@@ -97,6 +100,12 @@ export class ProjectBoardComponent implements OnInit {
 
   redirectPage(id:string): void {
     this.router.navigate(['/board'],{ queryParams: {id:id} });
+   }
+
+   refreshTable():void{
+    this.router.navigateByUrl('/projects', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/projects']);
+  }); 
    }
 
 
