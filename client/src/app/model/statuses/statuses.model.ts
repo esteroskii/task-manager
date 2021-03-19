@@ -2,7 +2,7 @@ import {Card, CardInterface} from '../card/card.model';
 
 
 
-export class Staus {
+export class Status {
 
   
   id: string;

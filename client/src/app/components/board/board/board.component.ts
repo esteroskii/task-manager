@@ -5,7 +5,7 @@ import {BoardService} from '../../../board/board-service';
 import {BoardModel} from '../../../model/board/board.model';
 import {LocalService} from '../../../board/local/local.service';
 import { ProjectStatusesService } from  '../../../_services/project-statuses.service'
-import { Staus } from '../../../model/statuses/statuses.model';
+import { Status } from '../../../model/statuses/statuses.model';
 import { JsonPipe } from '@angular/common';
 import { TaskService } from '../../../_services/task.service'
 import { Card } from '../../../model/card/card.model'
@@ -21,8 +21,10 @@ export class BoardComponent implements OnInit {
 
   id: string;
   lists: ListInterface[];
-  statuses : Staus[];
+  statuses : Status[];
   cards : Card[];
+  errorMessage = '';
+
   constructor( private projectservices: ProjectService,private route:ActivatedRoute,private router:Router,private localService: LocalService, private StatusesService: ProjectStatusesService, private TaskService: TaskService) { 
     this.statuses = [];
     this.cards = [];
@@ -42,19 +44,15 @@ export class BoardComponent implements OnInit {
     console.log("llego"+projectid);
 
     await this.getStatus();
-   
-    
-    
-    // ideally retrive and initialize from some storage.
 
   }
-
+  //
   getStatus() {
     this.StatusesService.getStates().subscribe((response) => {
       var x =  JSON.parse(JSON.stringify(response));
       this.lists = [];
       x.forEach(element => {
-        var status  = new Staus();
+        var status  = new Status();
         status.id = element.id;
         status.name = element.description;
         this.statuses.push(element);
@@ -89,13 +87,17 @@ export class BoardComponent implements OnInit {
     }) 
     
   }
-
- 
-
+  //
   addList() {
     this.StatusesService.postState({"description": (this.lists.length + 1).toString()}).subscribe((response) => {
       console.log(response);
+    },
+    err => {
+      this.errorMessage = err.error.message;
+      console.log(this.errorMessage);
+     
     });
+    
     const newList: ListInterface = new List();
     newList.position = this.lists.length + 1;
     newList.name = `List #${newList.position}`;
@@ -106,7 +108,7 @@ export class BoardComponent implements OnInit {
     console.log(newList);
     this.lists.push(newList);
   }
-
+  //
   moveCardAcrossList(movementInformation: MovementIntf) {
     var user = JSON.parse(sessionStorage.getItem("auth-user"));
     var idUser = user["id"]; 
